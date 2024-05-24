@@ -1,2 +1,2 @@
 # Irise_Chatbot
-A chat botthat anser questions to create a better client experience with Irise
+A chat bot that answer questions to help refugee and asylee be more easily informed and have a better experience with Irise
