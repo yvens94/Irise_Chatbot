@@ -35,8 +35,7 @@
 
 
   2- saving the text after each element to just add the next itereration to it
-
-
+  
   3- iterating over each url in URLs
 
 

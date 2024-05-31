@@ -79,8 +79,10 @@ def print_text_with_links(url, headers):
         print(f"Failed to retrieve the webpage. Status code: {response.status_code}")
         return "Failed to retrieve the"
 
+#choose the broswe
 browser ="edge"
 
+#call the get user agent function
 user_agent = get_user_agent(browser)
 
 # Set the headers with the selected user agent
@@ -88,13 +90,13 @@ headers = {
     "User-Agent": user_agent
 }
 
-
+#Creating the folder to save the files folder we would maybe later upload to a database
 curr_dir =os.getcwd()
 data_dir = os.path.join(curr_dir, 'data','Raw_data')
 path_json_dir= os.path.join(data_dir,'json_scraped')
 os.makedirs(path_json_dir, exist_ok=True)
 
-# call the function
+# puting everythin together and creating the Json files
 for title, url in URLs.items():
     filepath=os.path.join(path_json_dir, f'{title}.json')
     print(f"\nScraping:{title}\n{'-'*40}")
