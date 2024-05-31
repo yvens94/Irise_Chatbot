@@ -45,4 +45,7 @@
   - Navigate HTML trees: tags, elements, descendants, scripts and styles etc..
   - Headers and user agents
   - generate json files
-  - 
+  - Use github better
+  - create a dev journal
+  - work better with path and files management
+  
