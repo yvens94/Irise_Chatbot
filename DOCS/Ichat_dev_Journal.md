@@ -47,4 +47,14 @@
   - Use github better
   - create a dev journal
   - work better with path and files management
+
+
+  6/2/2024
+  Creating a folder for the pdfs
+  and starting to work on the master json
+
+    - first it will be necessary to change the pdf files into json
+    -and then consolidate all the files into one json
   
+
+  Learning to work with pydf
