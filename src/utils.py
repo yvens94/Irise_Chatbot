@@ -1,6 +1,7 @@
 import json
 import os
 from pypdf import PdfReader
+from irisewebScrapping import path_json_dir
 
 
 #read PDF
@@ -14,19 +15,29 @@ def extract_text_pdf(pdfs_folder_path):
     else:
         files =os.listdir(pdf_folder)
 
-        text=""
+        
         for pdf_name in files:
             pdf_path= os.path.join(pdf_folder, pdf_name)
             if pdf_path.endswith('.pdf'):
                 reader_pdf=PdfReader(pdf_path)
+                text=""
                 for i in range(len(reader_pdf.pages)):
                     page = reader_pdf.pages[i]
                     data_pdf = page.extract_text()
                     text += data_pdf
 
-    return(text)
-                
+                filepath=os.path.join(path_json_dir, f'{pdf_name}.json')
+                print(f"\nScraping:{pdf_name}\n{'-'*40}")
+                textscraped ={
 
-pdfs_folder_path = 'data\Raw_data\data_pdfs'
+                    "title":pdf_name,
+                    "url":pdf_name,
+                    "body": text
+                    
+                    }
 
-print(extract_text_pdf(pdfs_folder_path))
+                with open(filepath, 'w', encoding='utf-8') as json_file:
+                    json.dump(textscraped, json_file,ensure_ascii=False, indent=4)
+
+            
+
