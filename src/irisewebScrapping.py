@@ -5,7 +5,7 @@ import json
 
 #Urls to scrape dictionary
 URLs={
-    "main page, about Interfaithrise, Contact,farm, donations and ressources links": "https://interfaithrise.org/",
+    "about Interfaithrise, contact and resources": "https://interfaithrise.org/",
 
     "Our partners & Community collaborators":"https://interfaithrise.org/coalition-members/",
 
@@ -110,6 +110,7 @@ for title, url in URLs.items():
 
     with open(filepath, 'w', encoding='utf-8') as json_file:
         json.dump(textscraped, json_file,ensure_ascii=False, indent=4)
+
 
 
 
