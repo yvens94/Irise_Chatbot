@@ -4,3 +4,5 @@ html5lib
 lxml
 requests
 pypdf
+huggingface_hub
+pandas

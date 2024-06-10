@@ -58,3 +58,23 @@
   
 
   Learning to work with pydf
+
+  6/4/2024
+  Learned about embeddings and how the embeddigs models are created
+  from one hot encoding to Hierachical Softmax
+
+
+  6/5/2024
+
+  Pull request using GIT PULL 
+  
+    too long names in github can't pull
+
+    conflict in github
+    After resolving the conflicts, use git add <resolved-file> to stage the changes, and then commit to complete the merge1.
+
+    Instead of a regular git pull, consider using git pull --rebase. This option fetches the latest changes from the remote branch and applies your local changes on top of them.
+    The advantage is that it avoids creating a merge commit, keeping your changes linear. However, you’ll still need to resolve any merge conflicts that arise.
+    To set this as your default behavior for git pull, run: git config --global pull.rebase true1.
+
+    clean repository tree
