@@ -2,11 +2,12 @@ import json
 import os
 import requests
 import pandas as pd
+from dotenv import load_dotenv
 
-
+load_dotenv()
 
 model_id = "sentence-transformers/all-MiniLM-L6-v2"
-hf_token = "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"
+hf_token = os.getenv('HUGGINGFACE_TOKEN')
 
 api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{model_id}"
 headers = {"Authorization": f"Bearer {hf_token}"}

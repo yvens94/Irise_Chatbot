@@ -6,3 +6,4 @@ requests
 pypdf
 huggingface_hub
 pandas
+python-dotenv

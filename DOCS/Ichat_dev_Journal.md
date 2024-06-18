@@ -139,4 +139,12 @@ embeddings
 - Mongo db Is not free even in shared 
 
 
+#### 6/17/2024
+
+- An introduction to langchain 
+- get to know chromadB it seems to be free
+- Data cleaning and preprocessing for LLMS
+
+
+
 
