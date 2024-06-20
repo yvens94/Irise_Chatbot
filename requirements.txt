@@ -7,3 +7,11 @@ pypdf
 huggingface_hub
 pandas
 python-dotenv
+helper-utils
+langchain
+chromadb
+openai
+matplotlib
+umap
+numpy
+sentence-transformers
