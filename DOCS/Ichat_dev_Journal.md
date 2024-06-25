@@ -145,6 +145,19 @@ embeddings
 - get to know chromadB it seems to be free
 - Data cleaning and preprocessing for LLMS
 
+### 6/18/2024
+- Course on Deep learning AI for techniques to get better retrieval 
+
+### 6/19/2024
+
+- implementation of some of the techiques, started to get better results
+- query expansion with example of aswers and similar questions
+
+### 6/24/2024
+- 
+
+
+
 
 
 

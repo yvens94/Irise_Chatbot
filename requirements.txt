@@ -15,4 +15,4 @@ matplotlib
 umap
 numpy
 sentence-transformers
-umao-learn
+umap-learn
