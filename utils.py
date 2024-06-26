@@ -1,6 +1,7 @@
 import json
 import os
 from pypdf import PdfReader
+import textwrap
 
 
 #read PDF
@@ -30,3 +31,11 @@ def extract_text_pdf(pdfs_folder_path):
 pdfs_folder_path = 'data\Raw_data\data_pdfs'
 
 print(extract_text_pdf(pdfs_folder_path))
+
+
+
+
+def text_wraper(text):
+    wrapper =textwrap.TextWrapper(width=70)
+    text2embed=wrapper.wrap(text=text)
+    return text2embed

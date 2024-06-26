@@ -154,7 +154,81 @@ embeddings
 - query expansion with example of aswers and similar questions
 
 ### 6/24/2024
-- 
+- jus planned the next day
+
+
+### 6/25/2024
+coding RAG and necesarry steps out of jupyter
+
+ - PLAN
+              
+
+               MASTER FILE LOADER FUNC
+    - loading the master json into a text file list
+    - converting the list in only text
+    - Cleanning the text: unicodes, normalized spaces, replace html codes
+
+            TEXT WRAPER FUNC
+    - wrap the ext to make it 
+    
+                  Langchain
+                  TEXT SPLITTER FUNC
+    - Use  langchain.text_splitter import RecursiveCharacterTextSplitter, SentenceTransformersTokenTextSplitter to creare the chunks
+    - first recursicve character splitter chunk size =8000, over lap =1000
+          - RecursiveCharacterTextSplitter: split in the specified character
+          - recursively until we got the size of chunks
+
+        sentenceTransformersTokenTextSplitter: split chunk into a number of token
+                  
+                  
+                   ChromaDB
+                   ChromaDB_loader func
+    - Call the embedding function to create embedding from chromadb
+    - use chromadb persistent client to put the vector database temporarily o local machines --create chroma client
+    - create collection if not exist
+    - indexed them the chunks
+    - add them to collection
+    -and count them to verify
+
+                  documents Retriever func
+    - call chroma_client get collection to load it when run
+    - defined the query input zone
+    - query the chroma collection defining the number of results to get
+    - get documents from results
+    - Change retrieved documents to string with the list_2_string function
+
+
+
+  OPENAI
+              OPENAI connector func
+  - define openai client
+  query
+
+ 
+  Query expansion
+                         Query expansor 
+          *pass the query to gpt without the rag and ask it to generate an example of answer, implement guardrails and constraints
+          *join the generated answerwith our prompt for an augmented prompt
+                          
+
+                          multiple query augmenter
+
+          *from this augmented prompt pass it to gpt again and ask for more(5) additional questions related to the original query
+          *join the ouput with the augmented query and this will be the final query to pass through the RAG
+  query
+
+                        RAG_func
+  - deine the rag function
+    - put the information available from the retrieve documents and pass the query
+    - define the main prompts with constraints and guardrails
+    - call reponse and return it, this the answer
+
+    We will probalbly implement embedding adaptor later on
+
+
+
+
+
 
 
 
