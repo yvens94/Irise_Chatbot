@@ -12,6 +12,7 @@
   - Set headers for Mozzilla, chrome, safari, edge and android so the scapper works with all of them using their respective user agent.
   - Got rid of the scripts and css styles to get only the texts
   code:    
+  code:    
         ```
           #Remove script and style elements
 
@@ -229,6 +230,33 @@ coding RAG and necesarry steps out of jupyter
 
 
 
+
+### 6/25/2024
+organizing folders
+
+ - data adquisicion
+    - scrapping
+    - pdfs
+    - to master json
+
+- Data preprocessing
+  - cleaning master_json 
+  - to loading in chroma
+- query preprocessing
+    - query expansor
+    - multiple query augmenter
+
+* RAG_inference
+  - calling RAG function for inference
+
+
+
+### 6/28/2024
+
+- finding the root directory
+  `return os.path.dirname(os.path.abspath(os.curdir))`
+  import modules anywhere
+  `sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../src')))`
 
 
 
