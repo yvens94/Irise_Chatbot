@@ -62,29 +62,28 @@ def token_splitter(character_split_texts):
     print(f"\nTotal chunks: {len(token_split_texts)}")
     return token_split_texts
 
-if __name__ == "__main__":
-    # root = os.path.dirname(os.path.abspath(os.curdir))
-    path  = r'C:\Users\Owner\OneDrive - Reformed Church of Highland Park Affordable Housing Corporation\Documents\Python Scripts\Refugee_Benefits_ChatBot\Irise_Chatbot\data\Raw_data\master_json.json'
+# root = os.path.dirname(os.path.abspath(os.curdir))
+path  = r'C:\Users\Owner\OneDrive - Reformed Church of Highland Park Affordable Housing Corporation\Documents\Python Scripts\Refugee_Benefits_ChatBot\Irise_Chatbot\data\Raw_data\master_json.json'
 
-    master_strings = master_json_loader(path)
-    if master_strings:
-        text2cha = master_string2text(master_strings)
-        text = clean_text(text2cha)
-        character_split_texts = character_splitter(text)
-        token_split_texts = token_splitter(character_split_texts)
-        ids = [str(i) for i in range(len(token_split_texts))]
+master_strings = master_json_loader(path)
+if master_strings:
+    text2cha = master_string2text(master_strings)
+    text = clean_text(text2cha)
+    character_split_texts = character_splitter(text)
+    token_split_texts = token_splitter(character_split_texts)
+    ids = [str(i) for i in range(len(token_split_texts))]
 
-        wk_dir =os.getcwd()
-        chromadir= os.path.join(wk_dir, "interfaithrise_rag_imfo")
-        os.makedirs(chromadir, exist_ok=True)
-        
+    wk_dir =os.getcwd()
+    chromadir= os.path.join(wk_dir, "interfaithrise_rag_imfo")
+    os.makedirs(chromadir, exist_ok=True)
+    
 
-        chroma_client = chromadb.PersistentClient(path=chromadir)
-        
-        embedding_function = SentenceTransformerEmbeddingFunction()
-        chroma_collection = chroma_client.get_or_create_collection(name="interfaithrise_info", embedding_function=embedding_function)
-        chroma_collection.add(ids=ids, documents=token_split_texts)
-        print(chroma_collection.count())
-    else:
-        print("No data loaded from JSON")
+    chroma_client = chromadb.PersistentClient(path=chromadir)
+    
+    embedding_function = SentenceTransformerEmbeddingFunction()
+    chroma_collection = chroma_client.get_or_create_collection(name="interfaithrise_info", embedding_function=embedding_function)
+    chroma_collection.add(ids=ids, documents=token_split_texts)
+    print(chroma_collection.count())
+else:
+    print("No data loaded from JSON")
 

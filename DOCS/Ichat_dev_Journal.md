@@ -258,8 +258,14 @@ organizing folders
   import modules anywhere
   `sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../src')))`
 
+  finished the Data preprocessor
 
 
 
+### 6/29/2024
 
+  Completed the query procesor
 
+### 6/30/2024
+
+    Retriever
