@@ -4,7 +4,7 @@ from pypdf import PdfReader
 from src.components.data_adquisition.irisewebScrapping import path_json_dir
 
 
-#read PDF
+#read PDF information and convert them to json so we can append them to the scraped information
 def extract_text_pdf(pdfs_folder_path):
     curr_path =os.getcwd()
     pdfs_folder_path= pdfs_folder_path

@@ -6,14 +6,10 @@ import textwrap
 wrapper= textwrap.TextWrapper(width=70)
 
 from dotenv import load_dotenv, find_dotenv
-
 _=load_dotenv(find_dotenv())
-
 openai.api_key = os.environ['OPENAI_API_KEY']
-
 openai_client = OpenAI()
 
-import openai
 
 def query_expansor(query, model="gpt-3.5-turbo"):
     messages =[
@@ -21,6 +17,7 @@ def query_expansor(query, model="gpt-3.5-turbo"):
             "role":"system",
             "content": "You are a helpful expert customer service assistant at interfaithrise which an agency that help with refugee and immigrant resettlement, Provide an example answer to the given question,that might be found in the documentation of an agency like that."
             " only answer question related to interfaithrise, and our services"
+            "keep your answer to 2 phrases"
         },
         {"role":"user","content":query}
     ]
@@ -45,7 +42,7 @@ def augment_multiple_query(query, model ="gpt-3.5-turbo"):
             "role": "system",
             "content": (
                 "you are a helpful customer service ervice assistant at interfaithrise which an agency that help with refugee and immigrant resettlement"
-            "Suggest up to five additional related questions to help them find the information they need, for the provided question. "
+            "Suggest up to 2 additional related questions to help them find the information they need, for the provided question. "
             "Suggest only short questions without compound sentences. Suggest a variety of questions that cover different aspects of the topic."
             "Make sure they are complete questions, and that they are related to the original question."
             "Output one question per line. Do not number the questions."

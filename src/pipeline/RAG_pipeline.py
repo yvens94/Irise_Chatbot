@@ -2,12 +2,13 @@ import sys
 import os
 import openai
 from openai import OpenAI
+import chromadb
 
 from dotenv import load_dotenv, find_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 
 from components.query_preprocessor import final_query
-from components.data_preprocessor import chroma_client
+from components.data_preprocessor import chromadir
 import textwrap
 
 wrapper =textwrap.TextWrapper(width= 70)
@@ -26,7 +27,7 @@ def list_2_string(list):
 
 def retriever(client, query):
     chroma_collection= client.get_collection(name = "interfaithrise_info")
-    results =chroma_collection.query(query_texts = [query], n_results = 4)
+    results =chroma_collection.query(query_texts = query, n_results = 4)
 
     retrieved_documents = list_2_string(results['documents'])
     return retrieved_documents
@@ -63,12 +64,11 @@ def rag(query, retrieved_documents, model ="gpt-3.5-turbo"):
 
 if __name__ == '__main__':
 
-    client=chroma_client
-    query =final_query
+    chroma_client =chromadb.PersistentClient(path =chromadir)
 
-    retrieved_documents = retriever(query, client)
+    retrieved_documents = retriever(chroma_client, final_query)
 
-    output_final= rag(query, retrieved_documents)
+    output_final= rag(final_query, retrieved_documents)
 
     final_answer = wrapper.wrap(output_final)
 

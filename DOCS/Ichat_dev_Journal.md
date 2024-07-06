@@ -268,4 +268,16 @@ organizing folders
 
 ### 6/30/2024
 
-    Retriever
+    Retriever And RAG pipeline
+
+### 7/6/2024
+
+- debugging the retrieval process
+- in data preprocessing.py took the creation of the client out of the codition of checking the master json existence
+- In Rag pipeline, recall the persistent client with the define path, feed the final query not as a
+  list but just string
+-query preprocesor, changed the generated questions from the query to 2 and the expanded query hypo
+  thetical answer to 2 phrases, because we were exceeding the tokens limits of the models
+
+
+  
