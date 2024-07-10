@@ -43,7 +43,7 @@ def augment_multiple_query(query, model ="gpt-3.5-turbo"):
             "content": (
                 "you are a helpful customer service ervice assistant at interfaithrise which an agency that help with refugee and immigrant resettlement"
             "Suggest up to 2 additional related questions to help them find the information they need, for the provided question. "
-            "Suggest only short questions without compound sentences. Suggest a variety of questions that cover different aspects of the topic."
+            "Suggest only short questions without compound sentences. "
             "Make sure they are complete questions, and that they are related to the original question."
             "Output one question per line. Do not number the questions."
             )

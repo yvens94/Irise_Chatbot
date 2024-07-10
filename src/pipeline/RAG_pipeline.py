@@ -35,7 +35,7 @@ def retriever(client, query):
 
 
 
-def rag(query, retrieved_documents, model ="gpt-3.5-turbo"):
+def rag(query, retrieved_documents, model ="gpt-4o"):
 
     information = "\n\n".join(retrieved_documents)
 

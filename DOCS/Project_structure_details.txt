@@ -1,0 +1,60 @@
+
+* are folders
+- are files
+
+IRISE_CHATBOT:Root directory
+   * data
+
+       * embeddings: A folder created where the embeddings would be kept locally for experimentation or before having them in the vectordb
+
+       * Raw_data: contains the pdfs gotten from Irise documentation and the scrapped information  from scrapping the website
+           - data_pdfs: tthe pdf files
+           - json_scrapped: the information from irise_webscrapping.py
+           - master_json.json: the master_jsonfile where scrapped info and pdf converted to json in pdf2json.py are combined into one master_jsonfile
+                                to produce the embeddings
+
+   * DOCS: contains documentation, dev_journal, paper on which this infra is based, and architeture plans
+
+       - Chatbotarchitecture without translation pdf: a pdf with a design of the architecture at this point the multilangual models
+            were not very good so I was thinking about adding a module to handle translation, gpt 3.5 could handle spanish, but still strugle
+            with haitian creole.
+       - Ichat_dev_journal: where I keep progresss and challenges and lessons learn and basically to not forget what i was doing
+       - irise chatBot.docx: A more formal documents were I talk about the technologies and techniques used and why, it is like the final project
+            still working on it.
+       - Project_structure_details.txt: is the present document where I explain what is found in each file .
+       -refugee_benefits_Chatbots_projects.docs: another document with info about the technology use, it will probably be erased
+
+    *Interfaithrise_rag_imfo: the persistent client that contains from chromadb that contains the embeddings and our local vectordb
+
+    *notebooks: contains nJupyter notebooks I used for experimentation and learning during the project
+        - notebooks/DeeblearningAi_RAGwChromadb: notebooks of the RAG with chromdb course I took from deepLearning adding
+        - notebooks/interfaithrise_rag_imfo: experimenting with the vectordb
+        -notebooks/embeddings_notebook.ipynb: notebook experimeting with embedding creation with models from hugginface and with chromadb
+
+    *src:
+        *components:
+            *data_aquisition:
+                - irisewebScrapping.py: scrappes irise website and get all text info in each sectionwith important info for the clients
+                - master_json.py: combines all jsons and pdfs into one master json files
+                - pdf2json.py: converts the pdf to json
+        - data_preprocessor.py: preprocess the data, cleaning, removing html pieces, decode utf-8, all the prepocessing until loading the 
+            embeddings to chroma and create the collection
+        - query_processor.py:implements the query expansion steps for better retrieval
+
+
+        *pipeline:
+            - RAG pipeline: where the query and the retrieval happens and also the main file
+            - embeddings.py:with code to create embeddings with hugging face, -- not in use for now
+        utils.py
+
+    -.env
+    .gitignore
+    - DOckerFile
+    -ReadMe
+    -requirements.txt
+        
+
+
+
+
+        

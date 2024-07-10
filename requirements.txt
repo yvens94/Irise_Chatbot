@@ -16,3 +16,4 @@ umap
 numpy
 sentence-transformers
 umap-learn
+unidecode
