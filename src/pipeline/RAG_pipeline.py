@@ -3,13 +3,13 @@ import os
 import openai
 from openai import OpenAI
 import chromadb
+import textwrap
 
 from dotenv import load_dotenv, find_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 
 from components.query_preprocessor import final_query
-from components.data_preprocessor import chromadir
-import textwrap
+from components.data_preprocessor import chroma_client
 
 wrapper =textwrap.TextWrapper(width= 70)
 
@@ -48,6 +48,7 @@ def rag(query, retrieved_documents, model ="gpt-4o"):
             "be clear and simple answers, translate answer in the language they were asked, english, spanish, haitian creole, or ukrainian"
             "information in interfaithrise_info generally comes with a link, if it is there always provided it a way to find more information"
             " only answer question related to interfaithrise, and our services"
+            "all questions regarded cash assistance ask them to contact church world services, share this link https://cwsglobal.org/ for more info"
         },
         {"role": "user", "content": f"Question: {query}. \n Information: {information}"}
     ]
@@ -64,7 +65,7 @@ def rag(query, retrieved_documents, model ="gpt-4o"):
 
 if __name__ == '__main__':
 
-    chroma_client =chromadb.PersistentClient(path =chromadir)
+    
 
     retrieved_documents = retriever(chroma_client, final_query)
 

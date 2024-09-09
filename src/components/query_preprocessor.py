@@ -46,6 +46,7 @@ def augment_multiple_query(query, model ="gpt-3.5-turbo"):
             "Suggest only short questions without compound sentences. "
             "Make sure they are complete questions, and that they are related to the original question."
             "Output one question per line. Do not number the questions."
+            
             )
         },
         {"role": "user", "content": query}

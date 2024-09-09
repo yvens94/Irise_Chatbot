@@ -9,7 +9,7 @@ pandas
 python-dotenv
 helper-utils
 langchain
-chromadb
+chromadb 
 openai
 matplotlib
 umap
