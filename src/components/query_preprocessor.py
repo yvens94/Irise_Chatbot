@@ -47,6 +47,7 @@ def augment_multiple_query(query, model ="gpt-3.5-turbo"):
             "Make sure they are complete questions, and that they are related to the original question."
             "Output one question per line. Do not number the questions."
             
+            
             )
         },
         {"role": "user", "content": query}
@@ -69,29 +70,30 @@ def list_2_string(list):
 
 
 
-original_query= str(input('Ask a question to David: '))
+def query_prepo(original_query):
+    augmented_queries = augment_multiple_query(original_query)
 
-augmented_queries = augment_multiple_query(original_query)
+    augmented_queries=list_2_string(augmented_queries)
 
-augmented_queries=list_2_string(augmented_queries)
+    expanded_query = query_expansor(augmented_queries)
 
-expanded_query = query_expansor(augmented_queries)
+    joint_query = query_jointer(original_query, expanded_query)
 
-joint_query = query_jointer(original_query, expanded_query)
-
-final_query= wrapper.wrap(joint_query)
+    final_query= wrapper.wrap(joint_query)
 
 
-print(original_query)
+    print(original_query)
 
-print('--'*100)
-print(augmented_queries)
-print('--'*100)
-print(expanded_query)
-print('--'*100)
-print(joint_query)
-print('--'*100)
-print(final_query)
+    print('--'*100)
+    print(augmented_queries)
+    print('--'*100)
+    print(expanded_query)
+    print('--'*100)
+    print(joint_query)
+    print('--'*100)
+    print(final_query)
+
+    return final_query
 
 
 

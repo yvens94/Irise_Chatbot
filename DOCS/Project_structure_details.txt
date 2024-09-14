@@ -45,7 +45,10 @@ IRISE_CHATBOT:Root directory
         *pipeline:
             - RAG pipeline: where the query and the retrieval happens and also the main file
             - embeddings.py:with code to create embeddings with hugging face, -- not in use for now
+            - main.py
+            - eval_ragas.py
         utils.py
+        
 
     -.env
     .gitignore

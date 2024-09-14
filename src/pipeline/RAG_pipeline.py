@@ -8,12 +8,8 @@ import textwrap
 from dotenv import load_dotenv, find_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
 
-from components.query_preprocessor import final_query
+from components import query_preprocessor 
 from components.data_preprocessor import chroma_client
-
-wrapper =textwrap.TextWrapper(width= 70)
-
-
 
 
 _ = load_dotenv(find_dotenv()) # read local .env file
@@ -62,15 +58,3 @@ def rag(query, retrieved_documents, model ="gpt-4o"):
 
 
 
-
-if __name__ == '__main__':
-
-    
-
-    retrieved_documents = retriever(chroma_client, final_query)
-
-    output_final= rag(final_query, retrieved_documents)
-
-    final_answer = wrapper.wrap(output_final)
-
-    print(final_answer)
