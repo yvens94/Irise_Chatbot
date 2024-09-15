@@ -259,3 +259,41 @@ organizing folders
   list but just string
   -query preprocesor, changed the generated questions from the query to 2 and the expanded query hypo
   thetical answer to 2 phrases, because we were exceeding the tokens limits of the models
+
+
+#### 9/14/2024
+
+- I have been working on the project but I haven't kept up with the dev journal
+
+Changes in the last period apart from taking a pause for some time includes:
+
+  - creating a main.py script where I execute Rag process using functionin other script.
+  this was done because i was having problems to run to connect multiple jobs like an inference and evaluatin separately when the functions
+  are called in the same script they're defined
+
+
+  # evaluation(quantitative)
+
+  - created a RAGAS pipeline evaluating the retriever and the generator part of our rag system, including enriching the RAG system
+  METRICS:
+    - context_precision', 'context_recall', 'faithfulness', 'answer_relevancy
+
+    WHY?
+
+      To evaluate : retriever part (context metrixcs) and generator part (faithfulness and answer relevancy)
+
+      Context precision [0,1]: if all of theground-truth items present in the contexts are ranked higher (computed using the question, ground_truth and contexts)
+
+      ![1726354858127](image/Ichat_dev_Journal/1726354858127.png)
+
+      Context recall[0,1]: Context recall measures the extent to which the retrieved context aligns with the ground truth,(computed using the question, ground_truth and contexts)
+      ![1726355758813](image/Ichat_dev_Journal/1726355758813.png)
+
+      Answer Relevance [0,1]: How pertinent the given answer is to the given prompt(question by the user, A lower score is assigned to answers that are incomplete or contain redundant) does not consider factuality but penalizes cases where the answer lacks completeness or redundant details, to compare groundtruh answer to generated answer, answer correctness. we didn't add it to our pipeline but we will, I'm also thinking about bias and fairness.
+
+      (calculated using question, Context, Answer)
+
+      ![1726356518413](image/Ichat_dev_Journal/1726356518413.png)
+
+      faithfulness: This measures the factual consistency of the generated answer against the given context. It is calculated from answer and retrieved context. The answer is scaled to (0,1) range. Higher the better.
+      ![1726357896127](image/Ichat_dev_Journal/1726357896127.png)

@@ -5,6 +5,7 @@ import os
 import textwrap
 import re
 from unidecode import unidecode
+from logger import logging
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter, SentenceTransformersTokenTextSplitter
 import chromadb
@@ -101,5 +102,6 @@ master_json_path  = r'data\Raw_data\master_json.json'
 path =os.path.join(wk_dir,master_json_path)
 chroma_client = chroma_client_creator(wk_dir)
 chroma_collection = chroma_collection_creator(path, chroma_client)
+logging.info("collection created")
     
 

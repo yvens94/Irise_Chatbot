@@ -1,8 +1,10 @@
 from datasets import Dataset
 import sys
 import os
+
 import pandas as pd
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
+from logger import logging
 from RAG_pipeline import rag, retriever
 from components.data_preprocessor import chroma_client
 from ragas import evaluate
@@ -56,7 +58,7 @@ dataset = Dataset.from_dict(data)
 print(dataset)
 
 
-
+logging.info('evaluation started')
 result = evaluate(
     dataset, 
     metrics=[
