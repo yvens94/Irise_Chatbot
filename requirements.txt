@@ -18,3 +18,4 @@ sentence-transformers
 umap-learn
 unidecode
 ragas
+streamlit

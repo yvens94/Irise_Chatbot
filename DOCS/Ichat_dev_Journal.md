@@ -19,6 +19,9 @@
 
   for script_or_style in soup(['script', 'style']):
   script_or_style.decompose()
+
+  ```
+
   ```
 - Get the text element along with their links so the chatbot can always provide links in support of the answers that the user can go to.
 
@@ -165,6 +168,7 @@ coding RAG and necesarry steps out of jupyter
     TEXT SPLITTER FUNC
   - Use  langchain.text_splitter import RecursiveCharacterTextSplitter, SentenceTransformersTokenTextSplitter to creare the chunks
   - first recursicve character splitter chunk size =8000, over lap =1000
+
     - RecursiveCharacterTextSplitter: split in the specified character
     - recursively until we got the size of chunks
 
@@ -187,24 +191,22 @@ coding RAG and necesarry steps out of jupyter
   - Change retrieved documents to string with the list_2_string function
 
   OPENAI
-              OPENAI connector func
-
+  OPENAI connector func
 - define openai client
   query
 
   Query expansion
-                         Query expansor
-          *pass the query to gpt without the rag and ask it to generate an example of answer, implement guardrails and constraints
-          *join the generated answerwith our prompt for an augmented prompt
+  Query expansor
+  *pass the query to gpt without the rag and ask it to generate an example of answer, implement guardrails and constraints
+  *join the generated answerwith our prompt for an augmented prompt
 
-    multiple query augmenter
+  multiple query augmenter
 
-    *from this augmented prompt pass it to gpt again and ask for more(5) additional questions related to the original query
-          *join the ouput with the augmented query and this will be the final query to pass through the RAG
+  *from this augmented prompt pass it to gpt again and ask for more(5) additional questions related to the original query
+  *join the ouput with the augmented query and this will be the final query to pass through the RAG
   query
 
-    RAG_func
-
+  RAG_func
 - deine the rag function
 
   - put the information available from the retrieve documents and pass the query
@@ -260,40 +262,49 @@ organizing folders
   -query preprocesor, changed the generated questions from the query to 2 and the expanded query hypo
   thetical answer to 2 phrases, because we were exceeding the tokens limits of the models
 
-
 #### 9/14/2024
 
 - I have been working on the project but I haven't kept up with the dev journal
 
 Changes in the last period apart from taking a pause for some time includes:
 
-  - creating a main.py script where I execute Rag process using functionin other script.
+- creating a main.py script where I execute Rag process using functionin other script.
   this was done because i was having problems to run to connect multiple jobs like an inference and evaluatin separately when the functions
   are called in the same script they're defined
 
+# evaluation(quantitative)
 
-  # evaluation(quantitative)
-
-  - created a RAGAS pipeline evaluating the retriever and the generator part of our rag system, including enriching the RAG system
+- created a RAGAS pipeline evaluating the retriever and the generator part of our rag system, including enriching the RAG system
   METRICS:
-    - context_precision', 'context_recall', 'faithfulness', 'answer_relevancy
 
-    WHY?
+  - context_precision', 'context_recall', 'faithfulness', 'answer_relevancy
 
-      To evaluate : retriever part (context metrixcs) and generator part (faithfulness and answer relevancy)
+  WHY?
 
-      Context precision [0,1]: if all of theground-truth items present in the contexts are ranked higher (computed using the question, ground_truth and contexts)
+  To evaluate : retriever part (context metrixcs) and generator part (faithfulness and answer relevancy)
 
-      ![1726354858127](image/Ichat_dev_Journal/1726354858127.png)
+  Context precision [0,1]: if all of theground-truth items present in the contexts are ranked higher (computed using the question, ground_truth and contexts)
 
-      Context recall[0,1]: Context recall measures the extent to which the retrieved context aligns with the ground truth,(computed using the question, ground_truth and contexts)
-      ![1726355758813](image/Ichat_dev_Journal/1726355758813.png)
+  ![1726354858127](image/Ichat_dev_Journal/1726354858127.png)
 
-      Answer Relevance [0,1]: How pertinent the given answer is to the given prompt(question by the user, A lower score is assigned to answers that are incomplete or contain redundant) does not consider factuality but penalizes cases where the answer lacks completeness or redundant details, to compare groundtruh answer to generated answer, answer correctness. we didn't add it to our pipeline but we will, I'm also thinking about bias and fairness.
+  Context recall[0,1]: Context recall measures the extent to which the retrieved context aligns with the ground truth,(computed using the question, ground_truth and contexts)
+  ![1726355758813](image/Ichat_dev_Journal/1726355758813.png)
 
-      (calculated using question, Context, Answer)
+  Answer Relevance [0,1]: How pertinent the given answer is to the given prompt(question by the user, A lower score is assigned to answers that are incomplete or contain redundant) does not consider factuality but penalizes cases where the answer lacks completeness or redundant details, to compare groundtruh answer to generated answer, answer correctness. we didn't add it to our pipeline but we will, I'm also thinking about bias and fairness.
 
-      ![1726356518413](image/Ichat_dev_Journal/1726356518413.png)
+  (calculated using question, Context, Answer)
 
-      faithfulness: This measures the factual consistency of the generated answer against the given context. It is calculated from answer and retrieved context. The answer is scaled to (0,1) range. Higher the better.
-      ![1726357896127](image/Ichat_dev_Journal/1726357896127.png)
+  ![1726356518413](image/Ichat_dev_Journal/1726356518413.png)
+
+  faithfulness: This measures the factual consistency of the generated answer against the given context. It is calculated from answer and retrieved context. The answer is scaled to (0,1) range. Higher the better.
+  ![1726357896127](image/Ichat_dev_Journal/1726357896127.png)
+
+
+# jan 3rd 2025, going at it again
+
+## problem we are haveing to solve
+  0- initial deployement with streamlit just to see how it goes
+  1- stop using API and use a model in house, llama can be a good choice
+  2- start with the model and rag same architecture and finetune if necessary
+  3- evaluate questions remebering past question in one conversation, we will not save conversation
+  4- 
