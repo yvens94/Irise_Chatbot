@@ -2,7 +2,7 @@ from datasets import Dataset
 import sys
 import os
 import textwrap
-from RAG_pipeline import rag, retriever
+from rag_pipeline import rag, retriever
 from components.data_preprocessor import chroma_client
 from dotenv import load_dotenv, find_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
