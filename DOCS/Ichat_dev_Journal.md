@@ -308,3 +308,56 @@ Changes in the last period apart from taking a pause for some time includes:
   2- start with the model and rag same architecture and finetune if necessary
   3- evaluate questions remebering past question in one conversation, we will not save conversation
   4- 
+
+## streamlit up.
+
+
+
+
+# Refactoring  plan:
+
+Data adquisition:
+MONGODB
+  Pdf - try pymupdff4llm instead of pypdf
+  web scrapping, schedule it to happen every month on the 1st
+  store json from web in data base
+  
+Data transformation pipeline: "to be trigered with new data loaded in the database (use airflow)
+  Join Jsons scrapped and PDFs to create a corpus
+  Data cleaning
+  Langchain preprocessing (charc splitter aand token splitter )
+  Embeddings creation
+  load data in chroma
+
+Query preprocessing pipeline:
+  Query expansion,
+  Cross encoder reranking,
+
+  RAG pipeline:
+
+
+EValuation:
+
+RAGAS
+
+  - evaluate cost
+  - explore other approach as inspect or deepval
+
+
+Front end 
+  Streamlit: 
+    chatting and displaying performace metrics
+    cost
+
+I don't want to store al the question and results:
+  define how to save the results: by class, by number say 100 result randomly
+
+  
+
+
+
+
+
+
+
+
